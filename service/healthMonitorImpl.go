@@ -34,6 +34,8 @@ func NewHealthMonitorImpl() HealthMonitor {
 				fmt.Println("[HealthMonitorImpl][Method: NewHealthMonitorImpl][Message: Creating instance...]")
 				healthMonitor = &HealthMonitorImpl{monitors: make(map[string]map[string]string)}
 			})
+	} else {
+		fmt.Println("[HealthMonitorImpl][Method: NewHealthMonitorImpl][Message: HealthMonitor already created]")
 	}
 
 	return healthMonitor
