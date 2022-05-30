@@ -75,6 +75,7 @@ func (h *HealthMonitorImpl) Check() dto.ServerResponse {
 			Message: "Nothing to check",
 		}
 	}
+	fmt.Printf("[HealthMonitorImpl][Method: Check][Monitors to check: %v]\n", len(channelsArray))
 
 	serviceResponses, errServiceResponses := h.getServiceResponses(channelsArray)
 	if errServiceResponses != nil {
@@ -90,6 +91,7 @@ func (h *HealthMonitorImpl) Check() dto.ServerResponse {
 			Message: "Generic error",
 		}
 	}
+	fmt.Printf("[HealthMonitorImpl][Method: Check][Services responses: %v]\n", len(serviceResponses))
 
 	serverResponse := dto.ServerResponse{
 		Status:           200,
