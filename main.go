@@ -11,6 +11,7 @@ func main() {
 	var healthMonitor = service.NewHealthMonitorImpl()
 
 	// Try to insert resources, if healthMonitor doesn't have resources there is nothing to check
+	// If type, name or handle are empty, the resource is not added
 	resourceOne := dto.Resource{
 		Type:     "serviceUrl",
 		Name:     "graphql",
@@ -19,7 +20,7 @@ func main() {
 	}
 	_, errMonitorOne := healthMonitor.Monitor(resourceOne)
 	if errMonitorOne != nil {
-		panic(errMonitorOne)
+		fmt.Printf(errMonitorOne.Error())
 	}
 
 	resourceTwo := dto.Resource{
@@ -31,7 +32,7 @@ func main() {
 
 	_, errMonitorTwo := healthMonitor.Monitor(resourceTwo)
 	if errMonitorTwo != nil {
-		panic(errMonitorTwo)
+		fmt.Printf(errMonitorTwo.Error())
 	}
 
 	// Check function
