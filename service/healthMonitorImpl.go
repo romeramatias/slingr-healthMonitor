@@ -44,6 +44,7 @@ func (h *HealthMonitorImpl) Monitor(resource dto.Resource) (bool, error) {
 	defer fmt.Printf("[HealthMonitorImpl][Method: Monitor][END]\n")
 
 	if len(resource.Type) == 0 || len(resource.Name) == 0 || len(resource.Handle) == 0 {
+		fmt.Printf("[HealthMonitorImpl][Method: Monitor][Failed to add resource]\n")
 		return false, errors.New("error: resource with empty values")
 	}
 
